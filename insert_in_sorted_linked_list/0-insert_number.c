@@ -12,7 +12,6 @@ listint_t *insert_node(listint_t **head, const int n)
 {
     listint_t *new;
     listint_t *current;
-    int tmp;
 
     current = *head;
 
@@ -23,23 +22,16 @@ listint_t *insert_node(listint_t **head, const int n)
     new->n = n;
     new->next = NULL;
 
-    if (*head == NULL)
+    if (*head == NULL || n <= (*head)->n) {
+        // Cas où la liste est vide ou le nouvel élément doit être inséré au début
+        new->next = *head;
         *head = new;
-    else
-    {
-        while (current->n < new->n && current->next != NULL)
+    } else {
+        while (current->next != NULL && current->next->n < n)
             current = current->next;
-        if (current->next != NULL){
-            tmp = current->n;
-            current->n = new->n;
-            new->n = tmp;
-            new->next = current->next;
-            current->next = new;
-        }
-        else {
-            current->next = new;
-        }
-
+        // Insertion du nouvel élément
+        new->next = current->next;
+        current->next = new;
     }
 
     return (new);
