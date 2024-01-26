@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+Calcule le nombre minimal d'opérations nécessaires pour obtenir
+exactement n caractères 'H' dans un fichier texte.
+"""
+
+
 def minOperations(n):
     """
     Calcule le nombre minimal d'opérations nécessaires pour obtenir
