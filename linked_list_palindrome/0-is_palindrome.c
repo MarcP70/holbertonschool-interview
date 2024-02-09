@@ -36,10 +36,6 @@ int is_palindrome(listint_t **head)
 			current = current->next;
 			value_end = current->n;
 		}
-		printf("index_start: %i\n", index_start);
-		printf("value_start: %i\n", value_start);
-		printf("index_end: %i\n", index_end);
-		printf("value_end: %i\n", value_end);
 		index_start += 1;
 		index_end -= 1;
 
