@@ -17,6 +17,7 @@ def print_statistics(total_file_size, status_codes):
     Returns:
         None
     """
+
     print(f"File size: {total_file_size}")
     for code, count in sorted(status_codes.items()):
         if count > 0:
@@ -39,6 +40,7 @@ def main():
     Returns:
         None
     """
+
     try:
         total_file_size = 0
         status_codes = {
