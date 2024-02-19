@@ -61,3 +61,11 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+"""
+Ce script lit les logs du serveur à partir de l'entrée standard (stdin),
+calcule la taille totale des fichiers demandés et compte le nombre d'
+occurrences de chaque code de statut HTTP. Il affiche ensuite ces statistiques
+toutes les 10 lignes et à la fin du traitement ou en cas d'interruption par l'
+utilisateur (Ctrl+C).
+"""
