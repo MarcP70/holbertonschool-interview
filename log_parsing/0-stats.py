@@ -12,7 +12,10 @@ def print_statistics(total_file_size, status_codes):
     Args:
         total_file_size (int): La taille totale des fichiers.
         status_codes (dict): Un dictionnaire contenant les codes de statut HTTP
-                         comme clés et le nombre d'occurrences comme valeurs.
+                             comme clés et le nombre d'occurrences comme
+                                valeurs.
+    Returns:
+        None
     """
     print(f"File size: {total_file_size}")
     for code, count in sorted(status_codes.items()):
@@ -23,6 +26,18 @@ def print_statistics(total_file_size, status_codes):
 def main():
     """
     Fonction principale du programme.
+
+    Elle lit les logs du serveur à partir de l'entrée standard (stdin),
+    calcule la taille totale des fichiers demandés et compte le nombre
+    d'occurrences de chaque code de statut HTTP. Elle affiche ensuite
+    ces statistiques toutes les 10 lignes et à la fin du traitement
+    ou en cas d'interruption par l'utilisateur (Ctrl+C).
+
+    Args:
+        None
+
+    Returns:
+        None
     """
     try:
         total_file_size = 0
