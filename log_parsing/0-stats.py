@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+This module reads stdin line by line and computes metrics.
+"""
 import sys
 
 
