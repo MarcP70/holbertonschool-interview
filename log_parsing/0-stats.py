@@ -18,6 +18,9 @@ def print_statistics(total_file_size, status_codes):
 
 
 def main():
+    """
+    Fonction principale du programme.
+    """
     try:
         total_file_size = 0
         status_codes = {
