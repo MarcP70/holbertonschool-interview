@@ -17,13 +17,13 @@
  */
 void draw_char(int level, int x, int y)
 {
+	int size = (int)pow(3, level - 1);
+
 	if (level == 0)
 	{
 		printf("#");
 		return;
 	}
-
-	int size = (int)pow(3, level - 1);
 
 	if (x >= size && x < size * 2 && y >= size && y < size * 2)
 	{
@@ -46,10 +46,11 @@ void draw_char(int level, int x, int y)
 void draw_level(int level)
 {
 	int size = (int)pow(3, level);
+	int y, x;
 
-	for (int y = 0; y < size; y++)
+	for (y = 0; y < size; y++)
 	{
-		for (int x = 0; x < size; x++)
+		for (x = 0; x < size; x++)
 		{
 			draw_char(level, x, y);
 		}
