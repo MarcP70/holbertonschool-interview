@@ -1,55 +1,68 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 #include "search.h"
 
 /**
- * linear_skip - Searches for a value in a sorted skip list of integers.
- * @list: Pointer to the head of the skip list to search in.
- * @value: The value to search for.
+ * list_check - check for value in list
+ * @node: type pointer of node in the lists
+ * @value: type pointer of the first node indicating value
+ * Return: addres pointer where the value is located otherwise NULL
  *
- * Return: Pointer to the first node where value is located,
- * or NULL if value is not present in list or if head is NULL.
+ */
+
+skiplist_t *list_check(skiplist_t *node, int value)
+{
+	for (; node; node = node->next)
+	{
+		printf("Value checked at index [%lu] = [%d]\n",	node->index, node->n);
+		if (node->n == value)
+		{
+			return (node);
+		}
+	}
+	return (NULL);
+}
+/**
+ * linear_skip -  search a value in a sorted list
+ * @list: type pointer to head of the list bieng searched
+ * @value: type int value to search in the list
+ * Return: pointer first node where value is located or NULL
  */
 skiplist_t *linear_skip(skiplist_t *list, int value)
 {
-	skiplist_t *current = NULL, *prev = NULL;
+	skiplist_t *current_node, *prev_node, *temp_node;
 
-	if (list == NULL)
-		return (NULL);
-
-	current = list->express;
-	prev = list;
-
-	while (current)
+	if (list == 0)
 	{
-		printf("Value checked at index [%lu] = [%d]\n", current->index, current->n);
-		if (current->n >= value || current->express == NULL)
+		return (NULL);
+	}
+	current_node = list;
+	while (current_node)
+	{
+		if (current_node->express == NULL)
 		{
-			if (current->n >= value)
-				printf("Value found between indexes [%lu] and [%lu]\n",
-			prev->index, current->index);
-			else
-				printf("Value found between indexes [%lu] and [%lu]\n",
-			current->index, current->express->index);
-
-			while (prev && prev->index <= current->index)
-			{
-				printf("Value checked at index [%lu] = [%d]\n", prev->index, prev->n);
-				if (prev->n == value)
-					return (prev);
-				if (prev->next == NULL)
+			prev_node = current_node->express;
+			for (temp_node = list; temp_node; temp_node = temp_node->next)
+				if (temp_node->next == NULL)
+				{
+					printf("Value found between indexes [%lu] and [%lu]\n",
+						current_node->index, temp_node->index);
 					break;
-				prev = prev->next;
-			}
+				}
 			break;
 		}
-		prev = current;
-		if (current->express != NULL)
-			current = current->express;
-		else
-			current = current->next;
+		if (current_node->express->n >= value)
+		{
+			prev_node = current_node->express;
+			printf("Value checked at index [%lu] = [%d]\n",
+				prev_node->index, prev_node->n);
+			printf("Value found between indexes [%lu] and [%lu]\n",
+				current_node->index, prev_node->index);
+			break;
+		}
+		current_node = current_node->express;
+		printf("Value checked at index [%lu] = [%d]\n",
+			current_node->index, current_node->n);
 	}
-
-	return (NULL);
+	return (list_check(current_node, value));
 }
