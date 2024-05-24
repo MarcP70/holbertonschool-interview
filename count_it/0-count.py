@@ -24,17 +24,17 @@ def count_words(subreddit, word_list, after=None, word_count=None):
             for word in words:
                 cleaned_word = ''.join(filter(str.isalnum, word))
                 if cleaned_word in word_list:
-                    word_count[cleaned_word] = word_count.get(cleaned_word,
-                                                            0) + 1
+                    word_count[cleaned_word] = word_count.get(
+                        cleaned_word, 0) + 1
 
         after = data['data']['after']
         if after:
-            count_words(subreddit, word_list, after, word_count)
+            return count_words(subreddit, word_list, after, word_count)
         else:
             if word_count:
                 sorted_counts = sorted(word_count.items(),
                                        key=lambda item: (-item[1], item[0]))
                 for word, count in sorted_counts:
                     print(f'{word}: {count}')
-    except Exception as e:
+    except Exception:
         pass
