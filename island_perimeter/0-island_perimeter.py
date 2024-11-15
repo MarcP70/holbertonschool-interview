@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+
+
 def island_perimeter(grid):
     rows = len(grid)
     cols = len(grid[0])
