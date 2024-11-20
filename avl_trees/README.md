@@ -138,7 +138,8 @@ Note: In order for the main file to compile, you are provided with [this static 
         printf("Is %d avl: %d\n", root->n, avl);
         return (0);
     }
-    alex@/tmp/binary_trees$ gcc -Wall -Wextra -Werror -pedantic binary_tree_print.c 0-main.c 0-binary_tree_is_avl.c -L. -lavl -o 0-is_avl
+    alex@/tmp/binary_trees$ gcc -Wall -Wextra -Werror -pedantic -no-pie binary_tree_print.c 0-main.c 0-binary_tree_is_avl.c -L. -lavl -o 0-is_avl
+
     alex@/tmp/binary_trees$ ./0-is_avl
            .-------(098)--.
       .--(012)--.       (128)--.
