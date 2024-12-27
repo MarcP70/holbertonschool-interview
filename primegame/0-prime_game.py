@@ -12,6 +12,9 @@ def sieve_of_eratosthenes(n):
     Renvoie la liste des nombres premiers jusqu'à n en utilisant le crible
     d'Ératosthène.
     """
+    if n < 2:
+        return []  # Aucun nombre premier inférieur à 2
+
     primes = [True] * (n + 1)
     primes[0] = primes[1] = False  # 0 et 1 ne sont pas des premiers
     for i in range(2, int(n**0.5) + 1):
