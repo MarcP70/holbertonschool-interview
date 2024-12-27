@@ -1,9 +1,16 @@
 #!/usr/bin/python3
+"""
+Prime Game - Maria et Ben jouent à un jeu. Étant donné un ensemble
+d'entiers consécutifs allant de 1 à n inclus, ils choisissent à tour
+de rôle un nombre premier dans l'ensemble et retirent ce nombre et ses
+multiples de l'ensemble. Le joueur qui ne peut pas jouer perd la partie.
+"""
 
 
 def sieve_of_eratosthenes(n):
-    """Renvoie la liste des nombres premiers jusqu'à n en utilisant le crible
-        d'Ératosthène.
+    """
+    Renvoie la liste des nombres premiers jusqu'à n en utilisant le crible
+    d'Ératosthène.
     """
     primes = [True] * (n + 1)
     primes[0] = primes[1] = False  # 0 et 1 ne sont pas des premiers
@@ -15,7 +22,9 @@ def sieve_of_eratosthenes(n):
 
 
 def isWinner(x, nums):
-    """Renvoie le nom du joueur ayant gagné le plus de ronde"""
+    """
+    Renvoie le nom du joueur ayant gagné le plus de ronde
+    """
     maria_wins = 0
     ben_wins = 0
 
