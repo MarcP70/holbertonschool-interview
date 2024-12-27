@@ -28,6 +28,14 @@ def isWinner(x, nums):
     """
     Renvoie le nom du joueur ayant gagné le plus de ronde
     """
+    # Vérifie si x est invalide ou si nums est vide
+    if x <= 0 or not nums:
+        return None
+
+    # Vérifie si tous les éléments de nums sont invalides (<= 1)
+    if all(n <= 1 for n in nums):
+        return None
+
     maria_wins = 0
     ben_wins = 0
 
